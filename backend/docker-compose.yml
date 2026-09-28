@@ -1,0 +1,34 @@
+# NER-Connect | local infrastructure for the production path.
+# The hackathon demo runs fully in-memory (uvicorn alone), but this
+# spins up the real data layer from the TDD when you want it:
+#   docker compose up -d
+#   psql -h localhost -U ner -d nerconnect -f db/schema.sql
+
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_USER: ner
+      POSTGRES_PASSWORD: ner-connect-demo
+      POSTGRES_DB: nerconnect
+    ports:
+      - "5432:5432"
+    volumes:
+      - ner_pgdata:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/10-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ner -d nerconnect"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  cache:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - ner_redis:/data
+
+volumes:
+  ner_pgdata:
+  ner_redis:
