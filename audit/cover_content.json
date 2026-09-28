@@ -1,8 +1,0 @@
-{
-  "kicker": "TECHNICAL AUDIT REPORT",
-  "hero": "NER-Connect",
-  "title": "NER-Connect",
-  "subtitle": "AI-Based Smart Logistics and Accessibility Intelligence Platform - MDoNER / Smart India Hackathon",
-  "summary": "Engineering audit of the three-platform prototype: React web app, FastAPI routing service and Kotlin Android companion app.",
-  "meta": "MDoNER - Government of India. Audit date 26 September 2026."
-}

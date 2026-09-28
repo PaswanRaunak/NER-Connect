@@ -1,6 +1,7 @@
 # Dependencies
 node_modules/
 frontend/node_modules/
+prototype/node_modules/
 .pnp
 .pnp.js
 
@@ -11,6 +12,7 @@ frontend/node_modules/
 *.env
 backend/.env
 frontend/.env
+android/local.properties
 
 # Python artifacts
 __pycache__/
@@ -28,8 +30,23 @@ ENV/
 # Build and distribution outputs
 dist/
 frontend/dist/
+prototype/dist/
 build/
 *.egg-info/
+
+# Android build and caches
+android/.gradle/
+android/app/build/
+android/apk/
+*.apk
+*.aab
+
+# Test artifacts, references & screenshots
+gui-test-screenshots/
+design-reference/
+audit/
+prototype/
+.zcodeignore
 
 # Logs and databases
 *.log
